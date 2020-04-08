@@ -8,7 +8,6 @@ import Reason from './components/Reason'
 import Payment from './components/Payment'
 import Thanks from './components/Thanks'
 import { StateContext } from './state'
-import './styles/tailwind.css'
 
 const componentForStep = (step) => {
   switch (step.name) {
@@ -54,8 +53,10 @@ const App = () => {
   const state = useContext(StateContext)
 
   return (
-    <div className="h-screen bg-gray-100 flex items-center justify-center">
-      <div className="w-9/12">{componentForStep(state.step)}</div>
+    <div className="h-screen flex items-center justify-center">
+      <div className="w-10/12 md:w-9/12 lg:w-8/12">
+        {componentForStep(state.step)}
+      </div>
     </div>
   )
 }

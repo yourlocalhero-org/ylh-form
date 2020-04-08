@@ -105,13 +105,13 @@ const reducer = async (state, { action, payload }) => {
 export default class StateProvider extends React.Component {
   state = {
     form: {
-      email: 'sebastian.andreasson93@gmail.com',
-      amount: 124,
-      reason: 'De e bra',
-      location: 'AB Småland',
-      voucherCode: 'HDA3181',
+      email: '',
+      amount: 0,
+      reason: '',
+      location: '',
+      voucherCode: null,
     },
-    step: steps[6],
+    step: steps[0],
     locations: [],
     dispatch: (action) => {
       return new Promise(async (resolve) => {

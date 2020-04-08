@@ -100,11 +100,7 @@ const Amount = () => {
         <div className="max-w-sm rounded overflow-hidden shadow-l px-6 py-4 bg-indigo-100 border border-solid border-indigo-400">
           <CardElement options={CARD_OPTIONS} />
         </div>
-        <button
-          className="className=mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded"
-          type="submit"
-          disabled={!stripe}
-        >
+        <button type="submit" disabled={!stripe}>
           Betala
         </button>
       </form>

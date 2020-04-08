@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { actions, StateContext } from '../state'
+import '../styles/tailwind.css'
 
 const Location = ({ name, highlight, setValue }) => {
   const parts = name.split(highlight)
@@ -41,14 +42,14 @@ const Locations = () => {
       <input
         onClick={() => setShowLocations(true)}
         onChange={(e) => setValue(e.target.value)}
-        className="appearance-none bg-transparent border-none w-full text-3xl text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        className="custom-input"
         type="text"
         placeholder="Skriv in eller välj ett alternativ"
         aria-label="Namn"
         value={value}
       ></input>
-      {(showLocations || value.length > 0) && (
-        <div className="flex flex-col overflow-y-scroll h-64">
+      {showLocations && (
+        <div className="flex flex-col overflow-y-scroll h-screen">
           {locations
             .filter(
               (name) => name.toLowerCase().indexOf(value.toLowerCase()) !== -1

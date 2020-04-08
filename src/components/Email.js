@@ -12,7 +12,6 @@ const Email = () => {
     <div>
       <input
         onChange={(e) => setValue(e.target.value)}
-        className="appearance-none bg-transparent border-none w-full text-3xl text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         type="text"
         placeholder="somebody@example.com"
         aria-label="Email"

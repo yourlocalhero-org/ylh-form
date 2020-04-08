@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import '../styles/tailwind.css'
 import { StateContext } from '../state'
 
 const Point = ({ emoji, text }) => {

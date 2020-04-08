@@ -6,13 +6,12 @@ const StepComponent = ({ children }) => {
 
   return (
     <div>
-      <div className="leading-10 text-gray-900 text-2xl sm:text-1xl md:text-1xl">
+      <div className="text-gray-900 text-xl md:text-2xl md:leading-10">
         <strong>{step.number} →</strong> {step.title}
       </div>
-      <div className="pl-12 mt-4">{children}</div>
+      <div className="md:pl-12 mt-4">{children}</div>
       <div className="fixed right-0 bottom-0 m-4">
         <button
-          className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
             dispatch({ action: actions.BACKWARD })
           }}
@@ -20,7 +19,7 @@ const StepComponent = ({ children }) => {
           -
         </button>
         <button
-          className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="ml-2"
           onClick={() => {
             dispatch({ action: actions.FORWARD })
           }}

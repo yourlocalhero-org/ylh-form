@@ -12,7 +12,6 @@ const Reason = () => {
     <div>
       <input
         onChange={(e) => setValue(e.target.value)}
-        className="appearance-none bg-transparent border-none w-full text-3xl text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         type="text"
         placeholder="Svara här..."
         aria-label="Reason"
@@ -20,7 +19,6 @@ const Reason = () => {
       ></input>
       {value.length > 0 && (
         <button
-          className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={async () => {
             await dispatch({
               action: actions.UPDATE_FORM,
