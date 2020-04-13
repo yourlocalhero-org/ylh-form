@@ -40,17 +40,23 @@ const steps = [
     number: 2,
     title:
       'Kan du vara snäll och ge oss din emailadress så vi kan skicka ditt presentkort, dubbelkolla så det blir 100% rätt?',
+    formType: 'text',
+    formPlaceholder: 'somebody@example.com',
   },
   {
     name: 'amount',
     number: 3,
     title: 'Slutligen välj summan du vill köpa presentkort för',
+    formType: 'number',
+    formPlaceholder: 'Minst 100 kr',
   },
   {
     name: 'reason',
     number: 4,
     title:
       'Kan du dela med dig vad som är så speciellt med just detta stället?',
+    formType: 'text',
+    formPlaceholder: 'Svara här...',
   },
   {
     name: 'payment',
@@ -76,6 +82,7 @@ const reducer = async (state, { action, payload }) => {
         step: steps[state.step.number - 1],
       }
     case actions.UPDATE_FORM:
+      state.completed[state.step.name] = true
       return {
         ...state,
         form: {
@@ -84,6 +91,9 @@ const reducer = async (state, { action, payload }) => {
         },
       }
     case actions.GET_LOCATIONS:
+      if (state.locations.length !== 0) {
+        return state
+      }
       const response = await fetch(
         `${process.env.REACT_APP_API}/locations?city=${getQueryVariable(
           'city'
@@ -106,11 +116,12 @@ export default class StateProvider extends React.Component {
   state = {
     form: {
       email: '',
-      amount: 0,
+      amount: null,
       reason: '',
       location: '',
       voucherCode: null,
     },
+    completed: {},
     step: steps[0],
     locations: [],
     dispatch: (action) => {

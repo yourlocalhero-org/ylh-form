@@ -97,7 +97,7 @@ const Amount = () => {
         </p>
       </div>
       <form onSubmit={handleSubmit} className="mt-4">
-        <div className="max-w-sm rounded overflow-hidden shadow-l px-6 py-4 bg-indigo-100 border border-solid border-indigo-400">
+        <div className="max-w-sm rounded overflow-hidden shadow-l px-6 py-4 bg-indigo-100 border border-solid border-indigo-500">
           <CardElement options={CARD_OPTIONS} />
         </div>
         <button type="submit" disabled={!stripe}>

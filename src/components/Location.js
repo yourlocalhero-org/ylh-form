@@ -2,23 +2,32 @@ import React, { useEffect, useState, useContext } from 'react'
 import { actions, StateContext } from '../state'
 import '../styles/tailwind.css'
 
+const renderTextWithHighlights = (text, highlight) => {
+  const parts = text.split(new RegExp(`(${highlight})`, 'gi'))
+  return (
+    <span>
+      {parts.map((part, i) => {
+        if (highlight.toLowerCase().indexOf(part.toLowerCase()) !== -1)
+          return (
+            <strong key={i} className="font-bold">
+              {part}
+            </strong>
+          )
+        return <span key={i}>{part}</span>
+      })}
+    </span>
+  )
+}
+
 const Location = ({ name, highlight, setValue }) => {
-  const parts = name.split(highlight)
+  // const parts = name.split(highlight)
 
   return (
     <span
-      className="mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+      className="mt-1 bg-transparent hover:bg-indigo-500 text-indigo-700 font-light hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded"
       onClick={() => setValue(name)}
     >
-      {parts.length === 2 ? (
-        <>
-          {parts[0]}
-          <strong>{highlight}</strong>
-          {parts[1]}
-        </>
-      ) : (
-        parts.join('')
-      )}
+      {renderTextWithHighlights(name, highlight)}
     </span>
   )
 }
@@ -39,15 +48,17 @@ const Locations = () => {
 
   return (
     <div>
-      <input
-        onClick={() => setShowLocations(true)}
-        onChange={(e) => setValue(e.target.value)}
-        className="custom-input"
-        type="text"
-        placeholder="Skriv in eller välj ett alternativ"
-        aria-label="Namn"
-        value={value}
-      ></input>
+      <div className="border-b border-b-2 border-indigo-500 mb-4">
+        <input
+          onClick={() => setShowLocations(true)}
+          onChange={(e) => setValue(e.target.value)}
+          className="custom-input"
+          type="text"
+          placeholder="Skriv in eller välj ett alternativ"
+          aria-label="Namn"
+          value={value}
+        ></input>
+      </div>
       {showLocations && (
         <div className="flex flex-col overflow-y-scroll h-screen">
           {locations

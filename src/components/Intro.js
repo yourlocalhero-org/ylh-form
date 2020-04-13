@@ -5,7 +5,7 @@ const Point = ({ emoji, text }) => {
   return (
     <div className="flex flex-col items-center">
       <span className="text-2xl md:text-5xl">{emoji}</span>
-      <span className="text-xs md:text-3xl font-semibold">{text}</span>
+      <span className="text-xs md:text-2xl font-semibold">{text}</span>
     </div>
   )
 }
@@ -17,10 +17,10 @@ function Intro() {
     <div className="mt-24 md:mt-0">
       <div className="flex items-center justify-between flex-col">
         <div className="text-center">
-          <h1 className="leading-10 font-bold text-gray-900 text-4xl sm:text-5xl md:text-6xl">
+          <h1 className="leading-none font-bold text-gray-800 text-4xl sm:text-4xl md:text-6xl">
             Your Local Hero
             <br />
-            <span className="font-light text-4xl sm:text-5xl md:text-5xl">
+            <span className="leading-none font-light text-4xl sm:text-4xl md:text-5xl">
               Rädda ditt favoritställe
             </span>
           </h1>
