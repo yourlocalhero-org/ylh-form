@@ -20,8 +20,6 @@ const renderTextWithHighlights = (text, highlight) => {
 }
 
 const Location = ({ name, highlight, setValue }) => {
-  // const parts = name.split(highlight)
-
   return (
     <span
       className="mt-1 bg-transparent hover:bg-indigo-500 text-indigo-700 font-light hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded"

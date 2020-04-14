@@ -1,0 +1,38 @@
+version: '3'
+services:
+  caddy:
+    image: 'sebastianandreas/ylh-caddy:latest'
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - form
+      - api
+    volumes:
+      - /data/caddy:/root/.caddy
+    logging:
+      driver: 'json-file'
+      options:
+        max-file: '5'
+        max-size: '50m'
+  form:
+    image: 'sebastianandreas/ylh-form:latest'
+    restart: always
+    logging:
+      driver: 'json-file'
+      options:
+        max-file: '5'
+        max-size: '50m'
+  api:
+    image: 'sebastianandreas/ylh-backend:latest'
+    restart: always
+    environment:
+      - GOOGLE_API_KEY=GOOGLE_KEY
+      - GOOGLE_SPREADSHEET=PUBLIC_GOOGLE_SPREADSHEET_ID
+      - STRIPE_KEY=STRIPE_KEY
+    logging:
+      driver: 'json-file'
+      options:
+        max-file: '5'
+        max-size: '50m'

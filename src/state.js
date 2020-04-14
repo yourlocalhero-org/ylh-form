@@ -94,10 +94,9 @@ const reducer = async (state, { action, payload }) => {
       if (state.locations.length !== 0) {
         return state
       }
+      const city = getQueryVariable('city')
       const response = await fetch(
-        `${process.env.REACT_APP_API}/locations?city=${getQueryVariable(
-          'city'
-        )}`
+        `${process.env.REACT_APP_API}/locations?city=${city ? city : 'malmö'}`
       )
       const data = await response.json()
       return {
