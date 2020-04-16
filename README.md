@@ -12,7 +12,8 @@ $ npm i
 
 ### nvm
 
-This projects uses [nvm](https://github.com/creationix/nvm) so make sure you have that installed to use the correct version of node.
+This projects uses [nvm](https://github.com/creationix/nvm) either install and use that or match the node version found in `.nvmrc` file to ensure all the packages work.
+
 Inside the project root directory:
 
 ```bash
