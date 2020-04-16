@@ -41,7 +41,7 @@ const App = () => {
   const state = useContext(StateContext)
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-10/12 md:w-9/12 lg:w-6/12 xl:w-6/12">
         {componentForStep(state.step)}
       </div>

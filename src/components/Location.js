@@ -48,7 +48,10 @@ const Locations = () => {
     <div>
       <div className="border-b border-b-2 border-indigo-500 mb-4">
         <input
-          onClick={() => setShowLocations(true)}
+          onClick={() => {
+            setShowLocations(true)
+            setTimeout(() => window.scrollTo(0, 0), 200)
+          }}
           onChange={(e) => setValue(e.target.value)}
           className="custom-input"
           type="text"

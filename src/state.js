@@ -5,6 +5,7 @@ export const actions = {
   BACKWARD: 'backward',
   GET_LOCATIONS: 'get-locations',
   UPDATE_FORM: 'update-form',
+  RESET: 'reset',
 }
 
 export const StateContext = React.createContext({})
@@ -103,6 +104,11 @@ const reducer = async (state, { action, payload }) => {
         ...state,
         locations: data.values.map((val) => val[0]),
       }
+    case actions.RESET:
+      return {
+        ...initalState,
+        dispatch: state.dispatch,
+      }
     default:
       return {
         ...state,
@@ -111,18 +117,22 @@ const reducer = async (state, { action, payload }) => {
   }
 }
 
+const initalState = {
+  form: {
+    email: '',
+    amount: null,
+    reason: '',
+    location: '',
+    voucherCode: null,
+  },
+  completed: {},
+  step: steps[0],
+  locations: [],
+}
+
 export default class StateProvider extends React.Component {
   state = {
-    form: {
-      email: '',
-      amount: null,
-      reason: '',
-      location: '',
-      voucherCode: null,
-    },
-    completed: {},
-    step: steps[0],
-    locations: [],
+    ...initalState,
     dispatch: (action) => {
       return new Promise(async (resolve) => {
         const newState = await reducer(this.state, action)

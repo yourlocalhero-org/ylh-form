@@ -19,6 +19,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-stripe-checkout": "^2.6.3",
+    "react-transition-group": "^4.3.0",
     "stripe": "^8.39.0",
     "webfontloader": "^1.6.28",
     "yup": "^0.28.3"
