@@ -1,5 +1,16 @@
 # Your Local Hero - Voucher form
 
+A custom checkout form used for https://yourlocalhero.org/ to simplify the hosting for running the service or starting up a similiar one yourself. The goal for the technical parts of the service is to be as simple as possible with no database needed, but with some flexibility in terms of for example picking a payment provider should you need to replace Stripe.
+
+To have everything running live the services used are:
+
+- [Squarespace](https://www.squarespace.com/) - For the landing page which links to this form for different cities
+- [Stripe](https://stripe.com/) - For payments and receipts.
+- [Google spreadsheet](http://docs.google.com/spreadsheets) - To act as a "database" and store locations as well as vouchers for the restaurants to view.
+- [Zapier](https://zapier.com/home) - To automate update of spreadsheets when stripe payments are completed.
+
+And this custom form that ties it together hosted on [Digital Ocean](http://digitalocean.com/).
+
 ## Installation
 
 Clone and install dependencies
