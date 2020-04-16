@@ -1,68 +1,94 @@
+# Your Local Hero - Voucher form
+
+## Installation
+
+Clone and install dependencies
+
+```bash
+$ git clone https://github.com/yourlocalhero-org/ylh-form.git
+$ cd ylh-form
+$ npm i
+```
+
+### nvm
+
+This projects uses [nvm](https://github.com/creationix/nvm) so make sure you have that installed to use the correct version of node.
+Inside the project root directory:
+
+```bash
+$ nvm use
+```
+
+### .env
+
+Environment variables needed to run everything:
+
+`REACT_APP_` prefix makes the env variable accessible to the webapp and built into the static build.
+
+```
+REACT_APP_API=http://localhost:4000
+REACT_APP_STRIPE_KEY=your_stripe_api_key
+GOOGLE_API_KEY=google_api_key
+GOOGLE_SPREADSHEET=id-to-spreadsheet-to-fetch-locations-from
+STRIPE_KEY=your-stripe-secret-key-on-server
+```
+
+## Development
+
+To start the webapp and watch for changes run
+
+```bash
+$ npm start
+```
+
+If you set the .env variable `REACT_APP_API` to `http://localhost:4000` you also need to run:
+
+```bash
+$ npm run server
+```
+
+for fetching locations and communicating with the Stripe API.
+
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling, if you need to update any global styles in the `./src/index.css` you need to run
+
+```bash
+$ npm run build:style
+```
+
+## Deployment / Release
+
+To create a production build of the webapp run the following command with the .env variables you want in production
+
+```bash
+$ npm run build
+```
+
+If you want to run everything via Docker you can use the included Dockerfiles to create custom images
+
+Building webapp
+
+```
+$ docker build . -t yourdockerusername/ylh-form
+$ docker push yourdockerusername/ylh-form:latest
+```
+
+Building server
+
+```
+$ docker build -f ./Dockerfile.server -t yourdockerusername/ylh-api
+$ docker push yourdockerusername/ylh-api:latest
+```
+
+Using caddy as a proxy and for https with let's encrypt:
+
+```
+$ cd caddy
+$ docker build . -t yourdockerusername/ylh-caddy
+$ docker push yourdockerusername/ylh-caddy:latest
+```
+
+With the following docker images you can use the `docker-compose.yml` as an example for running the service on a single server. Make sure the endpoints in `./caddy/caddy.conf` matches the domain you use to point to the server and it should all work with https. Note again that the `REACT_APP_` env variables are baked into the build/image but the other env variables are needed for the api.
+
+#
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
